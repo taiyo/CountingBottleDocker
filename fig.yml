@@ -1,0 +1,12 @@
+web:
+  build: .
+  expose:
+    - "8080"
+lb:
+  image: devries/nginx:mainline
+  links:
+    - web
+  ports:
+    - "80:80"
+  volumes:
+    - nginx-config/:/etc/nginx/sites-enabled
